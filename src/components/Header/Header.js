@@ -37,8 +37,8 @@ const Header = () => {
                             </Nav.Link>
                             <NavDropdown title="Pablo" id="navbarScrollingDropdown">
                                 <NavDropdown.Item>
-                                    <Link to='/newProject'>
-                                        New Project
+                                    <Link to='/pokes'>
+                                        Pokemons
                                     </Link>
                                 </NavDropdown.Item>
                                 {/* <NavDropdown.Item href="#action4">
