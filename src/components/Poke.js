@@ -1,23 +1,25 @@
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
-import React, { useEffect, useState } from 'react'
+export const Pokemon = (props) => {
+    const [pokemon, setPokemon] = useState([])
+    useEffect(() => {
+        axios.get('https://pokeapi.co/api/v2/pokemon?limit=804&offset=0/')
+        .then(response => {setPokemon(response.data.results)})
+    }, [])
 
-export const App = () => {
-
-const [pokemon, setPokemon] = useState([])
-
-useEffect(() => {
-fetch('https://pokeapi.co/api/v2/pokemon?limit=807')
-    .then(response => response.json())
-    .then(response => setPokemon(response.results))
-})
-
-return (
-<div>
-    <ul>
-    { pokemon.map( (item, index) =>
-        <li key={index}>{item.name}</li>
-    )}
-    </ul>
-</div>
-)
+    return (
+    <div>
+        <h2 className="subtitle">Pokemons available </h2>
+        <ul className="list-none bg-slate-400">
+            {
+                pokemon.map((pokemon, index) => {
+                    return <li className="capitalize p-2 text-lg" key={index}>
+                        {pokemon.name}
+                    </li>
+                })
+            }
+        </ul>
+    </div>
+    )
 }
